@@ -1,0 +1,45 @@
+<form>
+    <div class="form-group" style="padding:100px;padding-left:400px;">
+        <input class="form-control" id="username" placeholder="Github user name"
+            style="width:50%;border-top:none;border-left:none;border-right:none;" #inputvalue>
+        <br>
+        <button type="button" class="btn btn-warning" (click)="onClickMe(inputvalue.value)">Find Me</button>
+        <ng-template #loading>
+            <div class="loader"  style="margin-top:30px;"></div>
+
+        </ng-template>
+
+    <div *ngIf="!isloading; else loading">
+        <div *ngIf="obj; else noData" class="card text-center" style="margin-top:30px;width:50%;"
+        id="dataAvailable">
+        <div>
+            <h4>These are the details that you requested for</h4>
+        </div>
+        <div class="card-header bg-primary" style="color:white;">
+            <!-- header data -->
+            <span>Name : {{obj.name}}</span><br>
+            <span>Email ID :{{obj.email}}</span><br>
+            <span>Company :{{obj.company}}</span><br>
+            <span>Join Date :{{obj.created_at}}</span><br>
+        </div>
+        <div class="card-body">
+            <img src="{{obj.avatar_url}}" class="card-img-top" alt="">
+        </div>
+        <div class="card-footer text-muted ">
+            <!-- footer data -->
+            <a href="{{obj.html_url}}" style="text-decoration:none;">View Profile</a>
+        </div>
+    </div>
+
+    </div>
+           
+    </div>
+</form>
+
+<ng-template #noData>
+    <div class="card text-center" style="margin-top:30px;width:50%;" id="dataNotAvailable">
+        <div class="card-header bg-primary ">
+            No Data To Display
+        </div>
+    </div>
+</ng-template>
